@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="full-screen" content="yes"/>
+  <meta name="screen-orientation" content="portrait"/>
+  <meta name="viewport" content="user-scalable=no"/>
+  <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
+  <script src="../js/data.js"></script>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false" onmousedown="return false">
+
+<script type="text/javascript">
+
+   const assets = [
+     'img/asset1.png',
+     'img/asset2.png',
+     'img/asset3.png',
+     'img/asset4.png'
+   ];
+
+   window.onload = function() {
+     $('#info-section').hide();
+
+     // When the window loads, start to initialize the SDK
+     FBInstant.initializeAsync().then(function() {
+
+       // We can start to load assets
+       for (let i in assets) {
+         // When preloading assets, make sure to report the progress
+         FBInstant.setLoadingProgress(i / assets.length * 100);
+       }
+
+       // Now that assets are loaded, call startGameAsync
+       FBInstant.startGameAsync().then(onStart);
+     });
+   };
+
+   function onStart() {
+     // This is called when the user has tapped Play
+     // Information from the SDK can now be accessed
+     $('#photo').attr('src', FBInstant.player.getPhoto());
+     $('#player-name').html(FBInstant.player.getName());
+     $('#player-id').html(FBInstant.player.getID());
+     $('#context-type').html(FBInstant.context.getType());
+     $('#info-section').show();
+   }
+
+   $(document).ready(function() {
+    $('.header').load("../header.html");
+    $('.footer').load("../footer.html");
+   });
+   
+ </script>
+
+<div class="header"></div>
+
+<div class="footer"></div>
+</body>
+</html>

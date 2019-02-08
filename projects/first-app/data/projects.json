@@ -1,0 +1,14 @@
+[
+	{
+		"id": "1",
+		"name": "DOTA Look alike",
+		"redirect-link": "1-dota-look-alike.html?id=1",
+		"image-url": "../img/dota-look-alike-logo.png"
+	},
+	{
+		"id": "2",
+		"name": "Test 2",
+		"redirect-link": "",
+		"image-url": "../img/img-2.jpg"
+	}
+]

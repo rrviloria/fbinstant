@@ -1,0 +1,11 @@
+Major:
+	Dynamic image creation/processing 
+		https://www.w3schools.com/html/html5_canvas.asp
+		https://www.cssscript.com/canvas-image-editor-tui/
+	FB - Share post
+
+
+Minor:
+	Messenger auto send application
+	Most viewed pages
+	Dashboard pagination
