@@ -1,0 +1,23 @@
+<script type="text/javascript">
+	$('#player-photo').attr('src', FBInstant.player.getPhoto());
+	$.ajax({url: 'data/1-dota-look-alike.json'}).then(function(data) {
+		var randInt = Math.floor(Math.random() * data.length);
+		$('#player-photo-lookalike').attr('src', data[randInt]['image-url']);
+	});
+</script>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6">
+					<img id="player-photo"></img>
+				</div>
+				<div class="col-xs-6">
+					<img id="player-photo-lookalike"></img>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

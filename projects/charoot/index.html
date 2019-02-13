@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="full-screen" content="yes"/>
+  <meta name="screen-orientation" content="portrait"/>
+  <meta name="viewport" content="user-scalable=no"/>
+  
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+  <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+  <link href="css/base.css" rel="stylesheet" type="text/css"/>
+  <link href="css/dashboard.css" rel="stylesheet" type="text/css"/>
+  <link href="css/loading.css" rel="stylesheet" type="text/css"/>
+  
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/html2canvas.js"></script>
+  <script src="js/html2canvas.min.js"></script>
+  <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
+  <script src="js/functions.js"></script>
+
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false" onmousedown="return false">
+
+	<script type="text/javascript">
+		var player = null;
+
+	    const assets = [
+	      'img/asset1.png',
+	      'img/asset2.png',
+	      'img/asset3.png',
+	      'img/asset4.png'
+	    ];
+
+	    window.onload = function() {
+	      $('#info-section').hide();
+	      FBInstant.initializeAsync().then(function() {
+	        for (let i in assets) {
+	          FBInstant.setLoadingProgress(i / assets.length * 100);
+	        }
+	        FBInstant.startGameAsync().then(onStart);
+	      });
+	    };
+
+	    function onStart() {
+	    	player = FBInstant.player;
+	      	$('.header').load("header.html");
+			$('.footer').load("footer.html");
+	    }
+  	</script>
+
+	<div class="header"></div>
+	<div class="app"></div>
+	<br/><br/>
+	<div class="footer"></div>
+
+
+<script src="js/data.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<br/><br/>
+		<div class="lds-spinner" id="loading-screen" hidden>
+			<div class="row">
+				<div class="col-xs-12 margin-top-1 margin-bottom-1"></div>
+				<div class="col-xs-12">
+					<div class="sp-container">
+						<div class="sp-content">
+							<div class="sp-globe"></div>
+							<h2 class="frame-1">GENERATING...</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 margin-top-1 margin-bottom-1"></div>
+			</div>
+		</div>
+
+		<div id="result-screen" hidden>
+			<div class="row" id="action-screen">
+				<div class="col-xs-6">
+					<button type="button" class="btn btn-primary btn-lg btn-block" onClick="shareOnFB()">Share</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-default btn-lg btn-block" id="try-again-btn">
+					    <span class="glyphicon glyphicon-repeat pull-left"></span> Try again
+					</button>
+				</div>
+			</div>
+			<br/>
+			<div class="row black-screen screen" id="image-screen">
+				<div class="col-xs-12 label color-white margin-top-1 margin-bottom-1"><p id="user-name">Anong habit meron ka?</p></div>
+				<div class="col-xs-12 label color-white margin-bottom-1"><p id="bad-habbit"></p><p>😂😂</p></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var millisec = 2000;
+	$('#loading-screen').show();
+	$('#result-screen').hide();
+	$('#user-name').html(FBInstant.player.getName() + ', ' + $('#user-name').html());
+
+	function reload() {
+		$.ajax({"url": "data/2-bad-habbits.json", "contentType": "application/json"}).then(function(data) {
+			if(typeof data == 'string') {
+				data = JSON.parse(data);
+			}
+			var randInt = Math.floor(Math.random() * data.length);
+			$('#bad-habbit').html(data[randInt]['value']);
+
+			$('#loading-screen').hide();
+			$('#result-screen').show();
+		});
+	}
+
+	setTimeout(function() {
+		reload();
+		showAd();
+	}, millisec);
+
+	$("#try-again-btn").click(function() {
+		$('#loading-screen').show();
+		$('#result-screen').hide();
+		setTimeout(reload, millisec);
+	});
+
+	
+	function shareOnFB() {
+		shareResult(document.getElementById("image-screen"), "Anong habit meron ka?");
+	}
+</script>
