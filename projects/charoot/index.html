@@ -49,15 +49,20 @@
 	    	player = FBInstant.player;
 	      	$('.header').load("header.html");
 			$('.footer').load("footer.html");
+			loadProjects(".dashboard");
 	    }
   	</script>
 
 	<div class="header"></div>
+	<div class="share-loading" id="share-loading" hidden></div>
 	<div class="app"></div>
-	<br/><br/>
+	<br/>
+	<div class="row" id="also-try" hidden>
+		<div class="col-xs-12 label label-6 color-white align-center">Please also try:</div>
+	</div>
+	<br/>
 	<div class="footer"></div>
-
-
+	<br/>
 <script src="js/data.js"></script>
 </body>
 </html>

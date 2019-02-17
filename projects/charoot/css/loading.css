@@ -18,6 +18,7 @@ h1.main, p.demos {
   -ms-animation-delay: 18s;
   animation-delay: 18s;
 }
+
 .sp-container {
   position: fixed;
   top: 0px;
@@ -329,5 +330,32 @@ h1.main, p.demos {
   100% {
     opacity: 1;
     transform: scale(1) rotate(0deg);
+  }
+}
+
+.share-loading {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+}
+.share-loading:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: share-loading 1.2s linear infinite;
+}
+@keyframes share-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

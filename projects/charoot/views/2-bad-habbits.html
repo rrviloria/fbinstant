@@ -1,21 +1,6 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-		<br/><br/>
-		<div class="lds-spinner" id="loading-screen" hidden>
-			<div class="row">
-				<div class="col-xs-12 margin-top-1 margin-bottom-1"></div>
-				<div class="col-xs-12">
-					<div class="sp-container">
-						<div class="sp-content">
-							<div class="sp-globe"></div>
-							<h2 class="frame-1">GENERATING...</h2>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 margin-top-1 margin-bottom-1"></div>
-			</div>
-		</div>
-
+		<div class="lds-spinner" id="loading-screen" hidden></div>
 		<div id="result-screen" hidden>
 			<div class="row" id="action-screen">
 				<div class="col-xs-6">
@@ -40,7 +25,7 @@
 	var millisec = 2000;
 	$('#loading-screen').show();
 	$('#result-screen').hide();
-	$('#user-name').html(FBInstant.player.getName() + ', ' + $('#user-name').html());
+	$('#user-name').html(FBInstant.player.getName() + ', ' + $('#user-name').html());  
 
 	function reload() {
 		$.ajax({"url": "data/2-bad-habbits.json", "contentType": "application/json"}).then(function(data) {
@@ -55,10 +40,7 @@
 		});
 	}
 
-	setTimeout(function() {
-		reload();
-		showAd();
-	}, millisec);
+	setTimeout(function() {reload(); showAd();}, millisec);
 
 	$("#try-again-btn").click(function() {
 		$('#loading-screen').show();
@@ -66,8 +48,10 @@
 		setTimeout(reload, millisec);
 	});
 
-	
 	function shareOnFB() {
-		shareResult(document.getElementById("image-screen"), "Anong habit meron ka?");
+		$('#share-loading').show();
+		shareResult(document.getElementById("image-screen"), "Anong habit meron ka?", 2);
 	}
+	$('#loading-screen').load("loader.html");
+	
 </script>

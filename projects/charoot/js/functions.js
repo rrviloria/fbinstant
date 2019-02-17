@@ -1,4 +1,4 @@
-function shareResult(domNode, text) {
+function shareResult(domNode, text, id) {
 	html2canvas(domNode).then(function(canvas) {
 		var base64Picture = canvas.toDataURL("image/png");
 
@@ -6,9 +6,9 @@ function shareResult(domNode, text) {
 		  intent: 'REQUEST',
 		  image: base64Picture,
 		  text: text,
-		  data: { myReplayData: '...' },
+		  data: { id: id },
 		}).then(function() {
-		  console.log('im here niggah');
+		  $('#share-loading').hide();
 		});
     });
 }
